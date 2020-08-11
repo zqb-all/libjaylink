@@ -30,6 +30,7 @@ endif
 libjaylink_la_SOURCES = \
 	buffer.c \
 	core.c \
+	c2.c \
 	device.c \
 	discovery.c \
 	discovery_tcp.c \

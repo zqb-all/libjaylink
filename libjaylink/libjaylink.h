@@ -246,6 +246,8 @@ enum jaylink_target_interface {
 	JAYLINK_TIF_2W_JTAG_PIC32 = 4,
 	/** Serial Peripheral Interface (SPI). */
 	JAYLINK_TIF_SPI = 5,
+	/** Silicon Labs 2-wire interface (C2). */
+	JAYLINK_TIF_C2 = 6,
 	/** Compact JTAG (cJTAG). **/
 	JAYLINK_TIF_CJTAG = 7,
 };
@@ -425,6 +427,9 @@ struct jaylink_connection {
  */
 #define JAYLINK_EMUCOM_CHANNEL_USER	0x10000
 
+/** Maximum length of a 2-wire (C2) interface data transfer. */
+#define JAYLINK_C2_MAX_LENGTH		64
+
 /**
  * @struct jaylink_context
  *
@@ -474,6 +479,17 @@ typedef int (*jaylink_log_callback)(const struct jaylink_context *ctx,
 JAYLINK_API int jaylink_init(struct jaylink_context **ctx);
 JAYLINK_API int jaylink_exit(struct jaylink_context *ctx);
 JAYLINK_API bool jaylink_library_has_cap(enum jaylink_capability cap);
+
+/*--- c2.c ------------------------------------------------------------------*/
+
+JAYLINK_API int jaylink_c2_read_address(struct jaylink_device_handle *devh,
+		uint8_t *address);
+JAYLINK_API int jaylink_c2_write_address(struct jaylink_device_handle *devh,
+		uint8_t address);
+JAYLINK_API int jaylink_c2_read_data(struct jaylink_device_handle *devh,
+		uint8_t *data, uint8_t length);
+JAYLINK_API int jaylink_c2_write_data(struct jaylink_device_handle *devh,
+		const uint8_t *data, uint8_t length);
 
 /*--- device.c --------------------------------------------------------------*/
 
