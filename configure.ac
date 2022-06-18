@@ -35,7 +35,8 @@ JAYLINK_CFLAGS="-Wall -Wextra -Werror -fvisibility=hidden"
 
 # Checks for programs.
 AC_PROG_CC
-AC_PROG_CC_C99
+# AC_PROG_CC_C99 is dropped in Autoconf >= 2.70 and done in AC_PROG_CC.
++m4_version_prereq([2.70],[],[AC_PROG_CC_C99])
 
 # Automake >= 1.12 requires AM_PROG_AR when using options -Wall and -Werror.
 # To be compatible with older versions of Automake use AM_PROG_AR if it's
