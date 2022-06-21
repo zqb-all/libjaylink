@@ -1,6 +1,21 @@
 News
 ====
 
+0.3.0 (2022-08-15)
+------------------
+
+ * New package version scheme
+ * New supported target interfaces:
+   - Silicon Labs 2-wire interface (C2)
+   - Serial peripheral interface (SPI)
+   - Compact JTAG (cJTAG)
+ * Add support for querying USB voltage
+ * jtag: Add functions to set/clear the TCK and TMS signals
+ * New string utility functions:
+   - jaylink_target_interface_string()
+   - jaylink_hardware_type_string()
+ * transport/tcp: Implement connection timeout
+
 0.2.0 (2020-07-11)
 ------------------
 
